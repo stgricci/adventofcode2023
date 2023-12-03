@@ -28,6 +28,7 @@ func main() {
 	defer file.Close()
 	// read file line by line
 	sum_of_winning_game_numbers := 0
+	sum_of_cube_powers := 0
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
@@ -38,8 +39,31 @@ func main() {
 			fmt.Println("Game", game_num, "is possible")
 			sum_of_winning_game_numbers += game_num
 		}
+
+		cubes_min := parseCubeMin(cubes)
+		sum_of_cube_powers += cubes_min
 	}
 	fmt.Println("Sum of winning game numbers:", sum_of_winning_game_numbers)
+	fmt.Println("Sum of cube powers:", sum_of_cube_powers)
+}
+
+func parseCubeMin(cubes []CubeGroup) int {
+	var minValues = map[string]int{
+    "red":   0,
+		"green": 0,
+		"blue":  0,
+	}
+	for _, cube := range cubes {
+		minValue, ok := minValues[cube.Color]
+		if !ok {
+			continue
+		}
+		if cube.Value > minValue {
+			minValues[cube.Color] = cube.Value
+		}
+	}
+
+	return minValues["red"] * minValues["green"] * minValues["blue"]
 }
 
 var maxValues = map[string]int{
