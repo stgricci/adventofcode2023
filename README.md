@@ -10,3 +10,4 @@ languages I'm unfamiliar with as well, for learnsies.
 - Day 1: Python
 - Day 2: Golang
 - Day 3: Typescript
+- Day 4: Python
