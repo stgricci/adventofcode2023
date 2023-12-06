@@ -11,3 +11,5 @@ languages I'm unfamiliar with as well, for learnsies.
 - Day 2: Golang
 - Day 3: Typescript
 - Day 4: Python
+- Day 5: Golang
+- Day 6: jq / bash
